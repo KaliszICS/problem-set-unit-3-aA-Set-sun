@@ -14,11 +14,23 @@ public class ProblemSet {
 	public static void main(String args[]) {
 
 		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Input an email: ");
 		String email = input.nextLine(); 
+
+		String result = emailValidation(email);
+		System.out.println(result);
+		
 		
 	}
 
 	public static String emailValidation (String email) {
+		if (email.contains("@")) {
+			return "Valid";
+		}
+		
+		return "Invalid";
+
 		
 	
 	}
