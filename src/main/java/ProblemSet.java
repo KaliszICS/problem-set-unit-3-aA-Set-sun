@@ -26,9 +26,13 @@ public class ProblemSet {
 
 	public static String emailValidation (String email) {
 		if (email.contains("@")) {
-			return "Valid";
+			if (!(email.startsWith(".") || email.endsWith("."))) {
+				if (!(email.contains(" "))) {
+					
+				}
+				  
+			}
 		}
-		
 		return "Invalid";
 
 		
