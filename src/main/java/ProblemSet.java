@@ -21,14 +21,21 @@ public class ProblemSet {
 		String result = emailValidation(email);
 		System.out.println(result);
 		
+		//String local = email.split("@");
+		//String domain = email.split("@");
+		//String domainExtension = email.split(email.lastIndexOf("."));
+
+		//@System.out.print(local);
+
 		
 	}
 
 	public static String emailValidation (String email) {
+
 		if (email.contains("@")) {
 			if (!(email.startsWith(".") || email.endsWith("."))) {
 				if (!(email.contains(" "))) {
-					
+					return "Valid";
 				}
 				  
 			}
