@@ -32,6 +32,8 @@ public class ProblemSet {
 
 	public static String emailValidation (String email) {
 
+		String local = email.substring(0, email.indexOf("@"))
+
 		if (email.contains("@")) {
 			if (!(email.startsWith(".") || email.endsWith("."))) {
 				if (!(email.contains(" "))) {
