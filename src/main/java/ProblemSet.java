@@ -20,10 +20,6 @@ public class ProblemSet {
 
 		String result = emailValidation(email);
 		System.out.println(result);
-		
-		//String local = email.split("@");
-		//String domain = email.split("@");
-		//String domainExtension = email.split(email.lastIndexOf("."));
 
 		//@System.out.print(local);
 
@@ -32,7 +28,16 @@ public class ProblemSet {
 
 	public static String emailValidation (String email) {
 
-		String local = email.substring(0, email.indexOf("@"))
+		email = email.trim();
+
+		if (email.length() != 0) {
+
+		String local = email.substring(0, email.indexOf("@"));
+		String domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
+		String domainExtension = email.substring(email.indexOf("."), email.length());
+
+		}
+		return "Invalid";
 
 		if (email.contains("@")) {
 			if (!(email.startsWith(".") || email.endsWith("."))) {
