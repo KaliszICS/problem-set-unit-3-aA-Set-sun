@@ -32,9 +32,9 @@ public class ProblemSet {
 
 		if (email.length() != 0) {
 
-		String local = email.substring(0, email.indexOf("@"));
-		String domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
-		String domainExtension = email.substring(email.indexOf("."), email.length());
+			String local = email.substring(0, email.indexOf("@"));
+			String domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
+			String domainExtension = email.substring(email.indexOf("."), email.length());
 
 		}
 		return "Invalid";
