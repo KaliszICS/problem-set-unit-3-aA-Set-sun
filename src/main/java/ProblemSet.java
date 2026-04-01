@@ -19,27 +19,54 @@ public class ProblemSet {
 		String email = input.nextLine(); 
 		email = email.trim();
 
-		if (email.length() != 0 && !(email.contains(" "))) {
+		String local;
+		String domain;
+		String domainExtension;
 
-			String local = email.substring(0, email.indexOf("@"));
-			String domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
-			String domainExtension = email.substring(email.indexOf("."), email.length());
+		if (email.length() != 0) {
 
-		}
-		return "Invalid";
+			local = email.substring(0, email.indexOf("@"));
+			domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
+			domainExtension = email.substring(email.indexOf("."), email.length());
 
-		if (email.contains("@")) {
-			if (!(email.startsWith(".") || email.endsWith("."))) {
-				if (!(email.contains(" "))) {
-					return "Valid";
+			if (email.contains("@")) {
+				if (!(email.startsWith(".") || email.endsWith("."))) {
+					if (!(email.contains(" "))) {
+						if (local.length() >= 1 && local.length() <= 64) {
+							if (domain.contains(".")) {
+								if (domainExtension.length() >= 2 && domainExtension.length() <= 6) {
+								System.out.println("Valid");
+							
+								}
+								else {
+									System.out.println("Invalid");
+								}
+							}
+							else {
+								System.out.println("Invalid");
+							}
+						}
+						else {
+						System.out.println("Invalid");
+						}
+					}
+					else {
+						System.out.println("Invalid");
+					}
 				}
-				  
+				else {
+					System.out.println("Invalid");
+				}
+
 			}
-		}
-		return "Invalid";
-
-		
+			else {
+				System.out.println("Invalid");
+			}
 	
-	}
+		}
+		else {
+			System.out.println("Invalid");
+		}
 
+}
 }
