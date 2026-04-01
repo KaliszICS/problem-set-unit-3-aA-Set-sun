@@ -17,20 +17,9 @@ public class ProblemSet {
 		
 		System.out.print("Input an email: ");
 		String email = input.nextLine(); 
-
-		String result = emailValidation(email);
-		System.out.println(result);
-
-		//@System.out.print(local);
-
-		
-	}
-
-	public static String emailValidation (String email) {
-
 		email = email.trim();
 
-		if (email.length() != 0) {
+		if (email.length() != 0 && !(email.contains(" "))) {
 
 			String local = email.substring(0, email.indexOf("@"));
 			String domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
