@@ -26,7 +26,7 @@ public class ProblemSet {
 		if (email.length() != 0) {
 
 			local = email.substring(0, email.indexOf("@"));
-			domain = email.substring(email.indexOf("@") + 1, email.lastIndexOf("."));
+			domain = email.substring(email.indexOf("@") + 1, email.length()));
 			domainExtension = email.substring(email.indexOf("."), email.length());
 
 			if (email.contains("@")) {
