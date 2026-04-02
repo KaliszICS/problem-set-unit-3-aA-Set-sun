@@ -35,9 +35,10 @@ public class ProblemSet {
 						if (local.length() >= 1 && local.length() <= 64) { //length check
 							if (domain.contains(".")) { //domain contains at least ONE (1) dot
 								if (domainExtension.length() >= 2 && domainExtension.length() <= 6) { //domain extension length
-								System.out.println("Valid");
+									System.out.println("Valid");
 							
 								}
+								else if (domainExtension.contains 
 								else {
 									System.out.println("Invalid: Invalid domain extension length");
 								}
