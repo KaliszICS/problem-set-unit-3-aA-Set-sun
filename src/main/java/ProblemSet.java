@@ -15,17 +15,22 @@ public class ProblemSet {
 	
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Input an email: ");
+		System.out.print("Input two emails: ");
 		String email = input.nextLine(); 
-		email = email.trim();	
-		
-		System.out.println(emailValidation(email));
+		email = email.trim();
+
+		String firstEmail = email.substring(0, email.indexOf(", "));
+		String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
+
+		System.out.println(emailValidation(firstEmail));
+		System.out.println(emailValidation(secondEmail));
 
 	}
 
+
 	public static String emailValidation (String email) {
 
-		String local;
+		/* String local;
 		String domain;
 		String domainExtension;
 
@@ -36,6 +41,8 @@ public class ProblemSet {
 
 				domain = email.substring(email.indexOf("@") + 1, email.length());
 				domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
+
+				*/
 
 				if (!(email.startsWith(".") || email.endsWith(".") || email.startsWith("+") || email.endsWith("+") || email.startsWith("_") || email.endsWith("_"))) { //starts + ends with dot check (+ THE OTHER SYMBOLS)
 					if (!(email.contains(" "))) { //space check
@@ -60,12 +67,12 @@ public class ProblemSet {
 					
 				}
 				return "Invalid: Starts or ends with dot, plus, or underscore";
-	
+	/*
 			}
 			return "Invalid: Missing @ or too many @s";
 		
 		}
 		return "Invalid: Nothing was entered";
-
+*/
 }
 }
