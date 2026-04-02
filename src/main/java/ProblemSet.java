@@ -26,8 +26,13 @@ public class ProblemSet {
 		if (email.length() != 0) {
 
 			local = email.substring(0, email.indexOf("@"));
+			local = local.replace(".", ""); //removed dots in local 
+
+
 			domain = email.substring(email.indexOf("@") + 1, email.length());
 			domainExtension = email.substring(email.indexOf("."), email.length());
+
+			System.out.println(domainExtension);
 
 			if (email.contains("@")) { //contains @ check
 				if (!(email.startsWith(".") || email.endsWith("."))) { //starts + ends with dot check
@@ -38,7 +43,10 @@ public class ProblemSet {
 									System.out.println("Valid");
 							
 								}
-								else if (domainExtension.contains 
+								
+								else if (domainExtension.indexOf(".") > 1) {
+									System.out.println("Valid");
+								}
 								else {
 									System.out.println("Invalid: Invalid domain extension length");
 								}
