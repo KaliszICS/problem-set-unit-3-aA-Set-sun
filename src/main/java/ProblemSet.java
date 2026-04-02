@@ -26,46 +26,46 @@ public class ProblemSet {
 		if (email.length() != 0) {
 
 			local = email.substring(0, email.indexOf("@"));
-			domain = email.substring(email.indexOf("@") + 1, email.length()));
+			domain = email.substring(email.indexOf("@") + 1, email.length());
 			domainExtension = email.substring(email.indexOf("."), email.length());
 
-			if (email.contains("@")) {
-				if (!(email.startsWith(".") || email.endsWith("."))) {
-					if (!(email.contains(" "))) {
-						if (local.length() >= 1 && local.length() <= 64) {
-							if (domain.contains(".")) {
-								if (domainExtension.length() >= 2 && domainExtension.length() <= 6) {
+			if (email.contains("@")) { //contains @ check
+				if (!(email.startsWith(".") || email.endsWith("."))) { //starts + ends with dot check
+					if (!(email.contains(" "))) { //space check
+						if (local.length() >= 1 && local.length() <= 64) { //length check
+							if (domain.contains(".")) { //domain contains at least ONE (1) dot
+								if (domainExtension.length() >= 2 && domainExtension.length() <= 6) { //domain extension length
 								System.out.println("Valid");
 							
 								}
 								else {
-									System.out.println("Invalid");
+									System.out.println("Invalid: Invalid domain extension length");
 								}
 							}
 							else {
-								System.out.println("Invalid");
+								System.out.println("Invalid: Domain contains no dot");
 							}
 						}
 						else {
-						System.out.println("Invalid");
+						System.out.println("Invalid: Invalid local length");
 						}
 					}
 					else {
-						System.out.println("Invalid");
+						System.out.println("Invalid: Contains spaces");
 					}
 				}
 				else {
-					System.out.println("Invalid");
+					System.out.println("Invalid: Starts or ends with dot");
 				}
 
 			}
 			else {
-				System.out.println("Invalid");
+				System.out.println("Invalid: Missing @");
 			}
 	
 		}
 		else {
-			System.out.println("Invalid");
+			System.out.println("Invalid: Nothing was entered");
 		}
 
 }
