@@ -19,16 +19,17 @@ public class ProblemSet {
 		String email = input.nextLine(); 
 		email = email.trim();
 
-		String firstEmail = email.substring(0, email.indexOf(", "));
-		String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
+		//String firstEmail = email.substring(0, email.indexOf(", "));
+		//String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
 
-		System.out.println(emailValidation(firstEmail));
-		System.out.println(emailValidation(secondEmail));
+		System.out.println(emailValidation(email));
+		//System.out.println(emailValidation(secondEmail));
 
 	}
 
 
-	public static String emailValidation (String email) {
+	//splitting email into local, domain, and domain extension
+	public static String emailSectioning (String email) {
 
 		String local;
 		String domain;
@@ -40,11 +41,9 @@ public class ProblemSet {
 				local = email.substring(0, email.indexOf("@"));
 				domain = email.substring(email.indexOf("@") + 1, email.length());
 				domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
-
 					
 			}
 			return "Invalid: Missing @ or too many @s";
-		
 		}
 		return "Invalid: Nothing was entered";
 
@@ -52,7 +51,8 @@ public class ProblemSet {
 				
 	}
 
-	public static String emailValidation2 (String email, String local, String domain, String domainExtension) {
+	//validates email
+	public static String emailValidation (String email, String local, String domain, String domainExtension) {
 	
 		if (email.startsWith(".") || email.endsWith(".") || email.startsWith("+") || email.endsWith("+") || email.startsWith("_") || email.endsWith("_")) { //starts + ends with dot check (+ THE OTHER SYMBOLS)
 			return "Invalid: Starts or ends with dot, plus, or underscore";
