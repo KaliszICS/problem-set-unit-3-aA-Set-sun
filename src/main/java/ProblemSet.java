@@ -19,14 +19,15 @@ public class ProblemSet {
 		String email = input.nextLine(); 
 		email = email.trim();
 
-		//String firstEmail = email.substring(0, email.indexOf(", "));
-		//String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
+		if (email.contains(",")
 
-		System.out.println(emailValidation(email));
-		//System.out.println(emailValidation(secondEmail));
+		String firstEmail = email.substring(0, email.indexOf(", "));
+		String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
+
+		System.out.println(emailValidation(firstEmail));
+		System.out.println(emailValidation(secondEmail));
 
 	}
-
 
 	//splitting email into local, domain, and domain extension
 	public static String emailSectioning (String email) {
@@ -41,14 +42,17 @@ public class ProblemSet {
 				local = email.substring(0, email.indexOf("@"));
 				domain = email.substring(email.indexOf("@") + 1, email.length());
 				domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
-					
 			}
 			return "Invalid: Missing @ or too many @s";
 		}
 		return "Invalid: Nothing was entered";
 
-
-				
+		// if ((emailValidation(email, local, domain, domainExtension).contains("Valid")) {
+		// 	return email + ": " + emailValidation(email, local, domain, domainExtension) + " | Local: " + local + " | Domain: " + domain;
+		// }
+		// else {
+		// 	return email + ": " + emailValidation(email, local, domain, domainExtension);
+		// }
 	}
 
 	//validates email
@@ -74,7 +78,7 @@ public class ProblemSet {
 			return "Invalid: Invalid domain extension length";
 		} 
 
-		if (local.contains(".")) {
+		if (local.contains(".")) { //exception C
 			local = local.replace(".", ""); //removed dots in local
 			return "Valid (Gmail normalized)";
 		}
@@ -84,29 +88,3 @@ public class ProblemSet {
 
 	}
 	}
-	//if (!(email.startsWith(".") || email.endsWith(".") || email.startsWith("+") || email.endsWith("+") || email.startsWith("_") || email.endsWith("_"))) { //starts + ends with dot check (+ THE OTHER SYMBOLS)
-// 					if (!(email.contains(" "))) { //space check
-// 						if (local.length() >= 1 && local.length() <= 64) { //length check
-// 							if (domain.contains(".")) { //domain contains at least ONE (1) dot
-// 								if (domainExtension.length() >= 2 && domainExtension.length() <= 6) { //domain extension length + checks for subdomains
-// 									if (local.contains(".")) { //exception C
-// 										local = local.replace(".", ""); //removed dots in local
-// 										return "Valid (Gmail normalized)";
-// 									}
-// 									return "Valid";
-// 								}
-// 								return "Invalid: Invalid domain extension length";
-// 							}
-// 							return "Invalid: Domain contains no dot";
-						
-// 						}
-// 						return "Invalid: Invalid local length";
-						
-// 					}					
-// 					return "Invalid: Contains spaces";
-					
-// 				}
-// 				return "Invalid: Starts or ends with dot, plus, or underscore";
-
-// }
-	
