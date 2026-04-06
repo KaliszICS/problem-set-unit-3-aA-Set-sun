@@ -2,9 +2,8 @@
 Title: Problem Set Unit 3
 Name: Angie
 Date created: March 27, 2026
-Date updated: March 27, 2026
+Date updated: April 4, 2026
 
-Just lost all my progress :(
 */
 
 import java.util.Scanner; 
@@ -19,45 +18,61 @@ public class ProblemSet {
 		String email = input.nextLine(); 
 		email = email.trim();
 
-		if (email.contains(",")
+		if (email.contains(",")) {
+			String firstEmail = email.substring(0, email.indexOf(", "));
+			String secondEmail = email.substring(email.indexOf(",") + 2, email.length());
 
-		String firstEmail = email.substring(0, email.indexOf(", "));
-		String secondEmail = email.substring(email.indexOf(", ") + 1, email.length());
+			if (firstEmail.length() > 0) {
+				System.out.println(emailCheck(firstEmail));
+			} 
 
-		System.out.println(emailValidation(firstEmail));
-		System.out.println(emailValidation(secondEmail));
+			if (secondEmail.length() > 0) {
+				System.out.println(emailCheck(secondEmail));
 
-	}
+			}
+		}
+		else {
+			System.out.println(emailCheck(email));
+		}	
+}
 
-	//splitting email into local, domain, and domain extension
-	public static String emailSectioning (String email) {
+	//splitting email into local, domain, and domain extension -> then it checks for validation
+	public static String emailCheck (String email) {
 
 		String local;
 		String domain;
 		String domainExtension;
 
-		if (email.length() != 0) {
-			if (email.matches("@")) { //contains @ check
+		String result = emailValidation(email);
 
-				local = email.substring(0, email.indexOf("@"));
-				domain = email.substring(email.indexOf("@") + 1, email.length());
-				domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
-			}
-			return "Invalid: Missing @ or too many @s";
+		if (email.length() == 0) {
+			return "Invalid: Nothing was entered";
 		}
-		return "Invalid: Nothing was entered";
+			
+		if (email.contains("@")) { //contains @ check
 
-		// if ((emailValidation(email, local, domain, domainExtension).contains("Valid")) {
-		// 	return email + ": " + emailValidation(email, local, domain, domainExtension) + " | Local: " + local + " | Domain: " + domain;
-		// }
-		// else {
-		// 	return email + ": " + emailValidation(email, local, domain, domainExtension);
-		// }
-	}
+			local = email.substring(0, email.indexOf("@"));
+			domain = email.substring(email.indexOf("@") + 1, email.length());
+			domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
+			
+				if (result.contains("Valid")) {
+					return email + ": " + result + " | Local: " + local + " | Domain: " + domain;
+				}
+				else {
+					return email + ": " + result;
+				}
+		}
+		return "Invalid: Missing @ or too many @s";
+}
 
-	//validates email
-	public static String emailValidation (String email, String local, String domain, String domainExtension) {
+	//checking email
+	public static String emailValidation (String email) {
 	
+		String local = email.substring(0, email.indexOf("@"));
+		String domain = email.substring(email.indexOf("@") + 1, email.length());
+		String domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length()); 
+		//just repeat re-declaring... 😩
+
 		if (email.startsWith(".") || email.endsWith(".") || email.startsWith("+") || email.endsWith("+") || email.startsWith("_") || email.endsWith("_")) { //starts + ends with dot check (+ THE OTHER SYMBOLS)
 			return "Invalid: Starts or ends with dot, plus, or underscore";
 		}
