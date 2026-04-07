@@ -46,7 +46,7 @@ public class ProblemSet {
 		String result = emailValidation(email);
 
 		if (email.length() == 0) {
-			return "Invalid: Nothing was entered";
+			return email + ": Invalid: Nothing was entered";
 		}
 			
 		if (email.contains("@")) { //contains @ check
@@ -62,7 +62,7 @@ public class ProblemSet {
 					return email + ": " + result;
 				}
 		}
-		return "Invalid: Missing @ or too many @s";
+		return email + ": Invalid: Missing @ or too many @s";
 }
 
 	//checking email
