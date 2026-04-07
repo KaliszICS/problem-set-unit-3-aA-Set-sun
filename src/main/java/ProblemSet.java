@@ -16,24 +16,33 @@ public class ProblemSet {
 		
 		System.out.print("Input two emails: ");
 		String email = input.nextLine(); 
-		email = email.trim();
 
-		if (email.contains(",")) {
-			String firstEmail = email.substring(0, email.indexOf(", "));
-			String secondEmail = email.substring(email.indexOf(",") + 2, email.length());
+	if (!(email.startsWith(" ") || email.endsWith(" "))) { //because we're apparently not supposed to trim
+		if (email.contains("@")) { //contains @ check
+			if (email.contains(",")) { //checks if there's 2 emails
+				String firstEmail = email.substring(0, email.indexOf(","));
+				String secondEmail = email.substring(email.indexOf(",") + 2, email.length());
 
-			if (firstEmail.length() > 0) {
+				if (firstEmail.length() > 0) {
 				System.out.println(emailCheck(firstEmail));
-			} 
+				} 
 
-			if (secondEmail.length() > 0) {
+				if (secondEmail.length() > 0) {
 				System.out.println(emailCheck(secondEmail));
-
+				}
+			} //for singular email
+				System.out.println(emailCheck(email));
+			}
+			else {
+				System.out.println(email + ": Invalid: Missing @");
 			}
 		}
 		else {
-			System.out.println(emailCheck(email));
-		}	
+			System.out.println(email + ": Invalid: Starts and or ends with spaces");
+		}
+
+	input.close();
+
 }
 
 	//splitting email into local, domain, and domain extension -> then it checks for validation
@@ -48,25 +57,28 @@ public class ProblemSet {
 		if (email.length() == 0) {
 			return email + ": Invalid: Nothing was entered";
 		}
-			
-		if (email.contains("@")) { //contains @ check
 
-			local = email.substring(0, email.indexOf("@"));
-			domain = email.substring(email.indexOf("@") + 1, email.length());
-			domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
-			
-				if (result.contains("Valid")) {
-					return email + ": " + result + " | Local: " + local + " | Domain: " + domain;
-				}
-				else {
-					return email + ": " + result;
-				}
+		local = email.substring(0, email.indexOf("@"));
+		domain = email.substring(email.indexOf("@") + 1, email.length());
+		domainExtension = domain.substring((domain.lastIndexOf(".") + 1), domain.length());
+		
+		if (result.contains("Valid")) {
+			return email + ": " + result + " | Local: " + local + " | Domain: " + domain;
 		}
-		return email + ": Invalid: Missing @ or too many @s";
+		else {
+			return email + ": " + result;
+		}
 }
 
 	//checking email
 	public static String emailValidation (String email) {
+
+		int firstAt = email.indexOf('@');
+		int secondAt = email.lastIndexOf('@');
+
+		if (firstAt != secondAt) {
+			return "Invalid: Multiple @s";
+		}
 	
 		String local = email.substring(0, email.indexOf("@"));
 		String domain = email.substring(email.indexOf("@") + 1, email.length());
