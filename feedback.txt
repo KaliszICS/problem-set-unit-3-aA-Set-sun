@@ -1,0 +1,12 @@
+K(30%): 100
+I(30%): 92
+C(10%): 100
+A(30%): 94
+95.8%
+
+Great work Angie.
+Some small things. Make sure you specify it is a gmail normalized even if it doesn't have dots.
+Also make sure your errors are slightly more specific (is it . or + or _, too long, too short).
+Also avoid rewriting code you've already done. you create the local and domain twice. 
+Why not just separate them and then send them into your method as parameters along with the full email. 
+You also end up writing domainExtension in emailCheck and then never use it.
